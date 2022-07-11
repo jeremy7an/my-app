@@ -9,7 +9,10 @@ return(
   <Fragment>
     <div>
       <NavBar />
-      <h1>This is the homepage</h1>
+      <div style={{padding:"50px"}}>
+        <h1>This is the homepage</h1>
+      </div>
+      
     </div>
   </Fragment>
 )

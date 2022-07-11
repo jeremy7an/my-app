@@ -23,10 +23,6 @@ code {
 color:white;
 }
 
-.nav_link:focus {
-  color:yellow;
-}
-
 .nav_link:hover {
   color:red;
 }
