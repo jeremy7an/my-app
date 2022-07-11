@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`radio button matches snapshot 1`] = `
+<div
+  className="flex_row"
+>
+  <label>
+    label
+  </label>
+  <input
+    name="name"
+    type="radio"
+    value="value"
+  />
+</div>
+`;
