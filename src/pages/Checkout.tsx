@@ -60,7 +60,6 @@ useEffect (()=>{
   if(level === "diamond"){
     if(prodTwoCount > 0&&prodTwoCount % 3 === 0){
       setCalculateTwoAlternate(prev => prev + 212)
-      console.log(true);
     }}
   
 }, [level, prodOneCount, prodTwoCount])
@@ -84,7 +83,6 @@ const [calculateTwoAlternate, setCalculateTwoAlternate] = useState<number>(0);
       {
         let count = prodTwoCount - 1;
         setCalculateTwo (count * productTwo * 0.8);
-        console.log(count)
       }else{
         setCalculateTwo (prodTwoCount * productTwo * 0.8);
       }
