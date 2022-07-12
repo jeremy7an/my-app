@@ -33,7 +33,9 @@ const decrementOneCount = () => {
 
 const incrementTwoCount = () => { 
   setProdTwoCount(prodTwoCount + 1);
+  
 }
+
 const decrementTwoCount = () => {
   setProdTwoCount(prodTwoCount - 1); 
 }
@@ -43,7 +45,7 @@ useEffect (()=>{
 
   if(level !== ""){setAll(false)}
   else{setAll(true)}
-
+  
 
   if(prodOneCount <= 0){
     setCheckProdOne(true);
@@ -55,6 +57,11 @@ useEffect (()=>{
   }else{
     setCheckProdTwo(false);
   }
+  if(level === "diamond"){
+    if(prodTwoCount > 0&&prodTwoCount % 3 === 0){
+      setCalculateTwoAlternate(prev => prev + 212)
+      console.log(true);
+    }}
   
 }, [level, prodOneCount, prodTwoCount])
 
@@ -65,6 +72,7 @@ useEffect (()=>{
 // if multiples of 3 skip the discount calculation
 const [calculateOne, setCalculateOne] = useState<number>(0);
 const [calculateTwo, setCalculateTwo] = useState<number>(0);
+const [calculateTwoAlternate, setCalculateTwoAlternate] = useState<number>(0);
 
 
 // calculate as you click
@@ -72,10 +80,19 @@ const [calculateTwo, setCalculateTwo] = useState<number>(0);
  
   if(level === "diamond"){
     if(prodTwoCount % 3 !== 0){
-      setCalculateTwo (prodTwoCount * productTwo * 0.8);
+      if(prodTwoCount>3)
+      {
+        let count = prodTwoCount - 1;
+        setCalculateTwo (count * productTwo * 0.8);
+        console.log(count)
+      }else{
+        setCalculateTwo (prodTwoCount * productTwo * 0.8);
+      }
     }
+  
     if (prodTwoCount === 0){
       setCalculateTwo(0)
+      setCalculateTwoAlternate(0)
     }
     if(prodOneCount>2){
       setProductOne(2588.99)
@@ -89,12 +106,16 @@ const [calculateTwo, setCalculateTwo] = useState<number>(0);
   if(level === "associate"){
     setCalculateOne(prodOneCount * productOne * 0.95);
     setCalculateTwo(prodTwoCount * productTwo * 0.95);
-   
-  }
-  setTotal(calculateOne + calculateTwo);
-  }, [level, calculateOne, calculateTwo, prodOneCount, productOne, prodTwoCount, productTwo]);
 
-  const handleOnClick = () => setPayNow(true);
+  }
+  setTotal(calculateOne + calculateTwo + calculateTwoAlternate);
+  }, [level, calculateOne, calculateTwo, prodOneCount, productOne, prodTwoCount, productTwo, calculateTwoAlternate]);
+
+  const handleOnClick = () => {
+    
+    setPayNow(true);
+  }
+  
   
 
 return(
